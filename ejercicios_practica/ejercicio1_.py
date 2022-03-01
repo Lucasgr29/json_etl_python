@@ -25,10 +25,30 @@ def serializar():
     #  { "prenda": "remeras", "cantidad": 12 }
     # Que su lista de prendas dentro del JSON tenga al menos 2 prendas
 
-    # json_data = {...}
+    json_data = { 
+              "nombre": "Lucas",
+              "apellido": "Granero",
+              "DNI": 36900032,
+              "vestimenta": [
+                    {
+                     "prenda": "remera",
+                     "cantidad": 6
+                    },
+                    {
+                     "prenda": "zapatilla",
+                     "cantidad": 8
+                    }
+                    ]
+              }
 
     # Una vez que finalice el JSON realice un "dump" para almacenarlo en
     # un archivo que usted defina
+
+    with open('buenas.json', 'w') as jsonfile:
+        data = [json_data]
+        json.dump(data ,jsonfile, indent=4)
+
+
 
     # Observe el archivo y verifique que se almaceno lo deseado
 
@@ -38,12 +58,25 @@ def deserializar():
     # JSON Deserialize
     # Basado en la función  anterior debe abrir y leer el contenido
     # del archivo y guardarlo en un objeto JSON utilizando el método
-    # load()
 
     # Luego debe convertir ese JSON data en json_string utilizando
     # el método "dumps" y finalmente imprimir en pantalla el resultado
     # Recuerde utilizar indent=4 para poder observar mejor el resultado
     # en pantalla y comparelo contra el JSON que generó en la función anterior
+
+    
+    with open('buenas.json', 'r') as jsonfile:
+        data_2 = json.load(jsonfile)
+    
+    print('Contenido del archivo json') 
+    print(json.dumps(data_2, indent = 4))  
+
+    print('Comparar contenido del json sin transformar')
+    print(data_2)
+
+   
+
+    
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")

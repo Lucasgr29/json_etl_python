@@ -40,10 +40,73 @@ if __name__ == '__main__':
     # del JSON recolectado. Al finalizar el bucle deberá tener la data
     # de los 10 usuarios con cuantos títulos completó cada uno.
 
+
+
+    response = requests.get("https://jsonplaceholder.typicode.com/todos")
+    data = response.json() 
+
+    
+    user_total = []
+    user1 = 0
+    user2 = 0
+    user3 = 0
+    user4 = 0
+    user5 = 0
+    user6 = 0
+    user7 = 0
+    user8 = 0
+    user9 = 0
+    user10 = 0
+
+    for user in data: 
+        if user['completed'] == True:
+            if user['userId'] == 1:
+                user1 = user1 + 1
+            elif user['userId'] == 2:
+                user2 = user2 + 1
+            elif user['userId'] == 3:
+                user3 = user3 + 1
+            elif user['userId'] == 4:
+                user4 = user4 + 1
+            elif user['userId'] == 5:
+                user5 = user5 + 1
+            elif user['userId'] == 6:
+                user6 = user6 + 1
+            elif user['userId'] == 7:
+                user7 = user7 + 1
+            elif user['userId'] == 8:
+                user8 = user8 + 1
+            elif user['userId'] == 9:
+                user9 = user9 + 1
+            elif user['userId'] == 10:
+                user10 = user10 + 1
+
+    user_total = [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10]
+    numero_usuario = [1,2,3,4,5,6,7,8,9,10]
+
+    
+
+
+
     # Debe poder graficar dicha información en un gráfico de barras.
     # En caso de no poder hacer el gráfico comience por usar print
     # para imprimir cuantos títulos completó cada usuario
     # y verifique si los primeros usuarios (mirando la página a ojo)
     # los datos recolectados son correctos.
+
+
+    fig = plt.figure()
+    fig.suptitle('Titulos logrados por los usuarios')
+    ax = fig.add_subplot()
+
+
+    ax.bar(numero_usuario, user_total, color = 'darkred')
+    ax.set_facecolor('whitesmoke')
+    ax.set_ylabel('Q titulos logrados')
+    ax.set_xlabel('Numero de Usuario')
+    plt.show()
+
+
+
 
     print("terminamos")
